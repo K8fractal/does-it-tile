@@ -1,9 +1,16 @@
 import express from "express"
+import { Query } from "express-serve-static-core";
 
 const app = express();
 
-app.get('/', (req,res)=> {
-    res.send('Hello world!');
+export interface TypedRequestQuery<T extends Query> extends Express.Request {
+    query: T
+}
+
+app.get('/hello/:id', (req: TypedRequestQuery<{id: string}>,res)=> {
+    //res.send('Hello '+req.query.id);
+    const id = req.query.id;
+    res.status(200).json({ ID: id });
 })
 
 app.get('/number', (req,res)=> {
