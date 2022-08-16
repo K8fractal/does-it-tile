@@ -3,14 +3,12 @@ import { Query } from "express-serve-static-core";
 
 const app = express();
 
-export interface TypedRequestQuery<T extends Query> extends Express.Request {
-    query: T
-}
 
-app.get('/hello/:id', (req: TypedRequestQuery<{id: string}>,res)=> {
-    //res.send('Hello '+req.query.id);
-    const id = req.query.id;
-    res.status(200).json({ ID: id });
+app.get('/hello/:name', (req,res)=> {
+    res.send('Hello '+req.params.name);
+    console.log(req);
+    //const id = req.query.id;
+    //res.status(200).json({ ID: id });
 })
 
 app.get('/number', (req,res)=> {

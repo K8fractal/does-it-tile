@@ -1,2 +1,1 @@
-GET http://localhost:3000/hello/i
-
+GET http://localhost:3000/hello/world

@@ -1,0 +1,1 @@
+To run use `npx nodemon dist/index.js` and `npm run dev`
