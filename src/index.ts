@@ -1,9 +1,14 @@
 import express from "express"
+import { Query } from "express-serve-static-core";
 
 const app = express();
 
-app.get('/', (req,res)=> {
-    res.send('Hello world!');
+
+app.get('/hello/:name', (req,res)=> {
+    res.send('Hello '+req.params.name);
+    console.log(req);
+    //const id = req.query.id;
+    //res.status(200).json({ ID: id });
 })
 
 app.get('/number', (req,res)=> {
