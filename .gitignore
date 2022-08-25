@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+test.http
 
 # production
 /dist
