@@ -1,5 +1,12 @@
 import express from "express"
 import { Query } from "express-serve-static-core";
+import { regularTiling } from "./tilings";
+
+
+enum StatusCodes {
+    OK = 200,
+    BadRequest = 400,
+  }
 
 const app = express();
 
@@ -16,13 +23,13 @@ app.get('/tile/:sides.:count', (req,res)=>{
     const sides = Number(req.params.sides);
     const count = Number(req.params.count)
     if(isNaN(sides) || isNaN(count)){
-        res.status(400);
+        res.status(StatusCodes.BadRequest);
         res.send('Tile requests must be in the form integer.integer')
     }
     else{
-        res.status(200);
-        res.send('STUB: Tiling description JSON here. Info about a tiling of '+count+ ' regular '+sides+'-gons: Coming soon.');
-//        res.send(regularTiling(sides,count))
+        res.status(StatusCodes.OK);
+//        res.send('STUB: Tiling description JSON here. Info about a tiling of '+count+ ' regular '+sides+'-gons: Coming soon.');
+       res.send(regularTiling(sides,count))
     }
 
 })
