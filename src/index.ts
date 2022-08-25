@@ -36,8 +36,8 @@ app.get('/tile/:sides.:count', (req,res)=>{
         res.send('Number of tiles at a vertex must be at least 3');
     } else{
         res.status(StatusCodes.OK);
-        res.send('STUB: Tiling description JSON here. Info about a tiling of '+count+ ' regular '+sides+'-gons: Coming soon.');
-    //   res.send(regularTiling(sides,count))
+    //    res.send('STUB: Tiling description JSON here. Info about a tiling of '+count+ ' regular '+sides+'-gons: Coming soon.');
+       res.send(regularTiling(sides,count))
     }
 
 })
