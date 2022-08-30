@@ -23,7 +23,7 @@ export const regularTiling = (sides: number, count: number): RegularTiling => {
     name: "Cube",
   }
 
-  const polygonName = (sides: number): string => {
+  export const polygonName = (sides: number): string => {
     switch(sides){
         case 3: return("triangle");
         case 4: return("square");
@@ -39,6 +39,6 @@ export const regularTiling = (sides: number, count: number): RegularTiling => {
   }
 
   //working in degrees
-  const interiorAngle = (sides: number): number => {
+  export const interiorAngle = (sides: number): number => {
     return(180-360/sides);
   }
