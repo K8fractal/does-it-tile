@@ -8,7 +8,7 @@ interface RegularTiling {
 //regularTiling(sides,count)
 
 export const regularTiling = (sides: number, count: number): RegularTiling => {
-    return({
+  return({
         polygon: polygonName(sides),
         count: count,
         type: "POLYHEDRON",
@@ -34,11 +34,18 @@ export const regularTiling = (sides: number, count: number): RegularTiling => {
         case 9: return("nonagon");
         case 10: return("decagon");
         case 12: return("dodecagon");
-        default: return(sides+"-gon");
+        default: 
+          if(sides < 3){
+            throw new Error("polygons must have at least 3 sides");
+          }
+          return(sides+"-gon");
     }
   }
 
   //working in degrees
   export const interiorAngle = (sides: number): number => {
+    if(sides < 3){
+      throw new Error("polygons must have at least 3 sides");
+    }
     return(180-360/sides);
   }
