@@ -1,17 +1,31 @@
+type tilingType = "TESSELLATION" | "POLYHEDRON" | "HYPERBOLIC" | "BRANCHING";
 interface RegularTiling {
     polygon: string;
     count: number;
-    type: "TESSELLATION" | "POLYHEDRON" | "HYPERBOLIC";
+    curvatureType: tilingType;
     name?: string;
 }
 
 //regularTiling(sides,count)
 
 export const regularTiling = (sides: number, count: number): RegularTiling => {
+  let angleSum = interiorAngle(sides)*count;
+  // first check
+  let regularTilingType:tilingType;
+  if (angleSum < 360){
+    regularTilingType = 'POLYHEDRON';
+    //additional checks: not needed for regular case
+  } else if (angleSum == 360){
+    //additional checks: not needed for regular case
+    regularTilingType = 'TESSELLATION';
+  } else { //angleSum > 360
+    regularTilingType = "HYPERBOLIC";
+  }
+  
   return({
         polygon: polygonName(sides),
         count: count,
-        type: "POLYHEDRON",
+        curvatureType: regularTilingType,
         name: "Cube",
       });
   };
@@ -19,7 +33,7 @@ export const regularTiling = (sides: number, count: number): RegularTiling => {
   const cube: RegularTiling = {
     polygon: "square",
     count: 3,
-    type: "POLYHEDRON",
+    curvatureType: "POLYHEDRON",
     name: "Cube",
   }
 

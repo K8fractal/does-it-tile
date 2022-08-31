@@ -1,4 +1,5 @@
-import { interiorAngle, polygonName} from "./tilings";
+import { register } from "ts-node";
+import { interiorAngle, polygonName, regularTiling} from "./tilings";
 
 describe('testing interior angle formula', () => {
     test('interior angle of a triangle', () => {
@@ -22,5 +23,14 @@ describe('testing polygonName', () => {
     });
     test('minimum number of sides',()=> {
         expect(() => polygonName(1)).toThrow();
+    });
+});
+
+describe('testing regularTiling',() => {
+    test('tesselations',() => {
+        expect(regularTiling(3,6).polygon).toBe('triangle');
+        expect(regularTiling(3,6).curvatureType).toBe('TESSELLATION');
+        expect(regularTiling(4,4).curvatureType).toBe('TESSELLATION');
+        expect(regularTiling(6,3).curvatureType).toBe('TESSELLATION');
     });
 });
