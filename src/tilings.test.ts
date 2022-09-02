@@ -1,5 +1,5 @@
 import { register } from "ts-node";
-import { interiorAngle, polygonName, regularTiling} from "./tilings";
+import { interiorAngle, polygonName, regularTiling, tilingType} from "./tilings";
 
 describe('testing interior angle formula', () => {
     test('interior angle of a triangle', () => {
@@ -33,4 +33,7 @@ describe('testing regularTiling',() => {
         expect(regularTiling(4,4).curvatureType).toBe('TESSELLATION');
         expect(regularTiling(6,3).curvatureType).toBe('TESSELLATION');
     });
+    test('polyhedra', ()=>{
+        expect(regularTiling(3,4).curvatureType).toBe('POLYHEDRON');
+    })
 });
