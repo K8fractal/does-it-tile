@@ -35,5 +35,5 @@ describe('testing regularTiling',() => {
     });
     test('polyhedra', ()=>{
         expect(regularTiling(3,4).curvatureType).toBe('POLYHEDRON');
-    })
+    });
 });
