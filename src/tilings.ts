@@ -1,4 +1,4 @@
-type tilingType = "TESSELLATION" | "POLYHEDRON" | "HYPERBOLIC" | "BRANCHING";
+export type tilingType = "TESSELLATION" | "POLYHEDRON" | "HYPERBOLIC" | "BRANCHING";
 interface RegularTiling {
     polygon: string;
     count: number;
