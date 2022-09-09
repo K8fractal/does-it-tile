@@ -8,6 +8,7 @@ phases:
       - npm install -g typescript
       - npm install
   build:
+    - tsc
 
 artifacts:
   files:
