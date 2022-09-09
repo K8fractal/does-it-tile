@@ -17,18 +17,19 @@ interface RegularTiling {
 //   [[4, 3], "Cube"],
 //   [[5, 3], "Dodecahedron"],
 // ]);
-
-// inelegant hack: index is 1000*sides+count
-const regularPolyhedraNames = new Map<number, string>([
-  [3003, "Tetrahedron"],
-  [3004, "Octahedron"],
-  [3005, "Icosahedron"],
-  [4003, "Cube"],
-  [5003, "Dodecahedron"],
-]);
-console.log(regularPolyhedraNames.get(3003));
-
-//regularTiling(sides,count)
+const regularPolyhedraName = (sides: number, count: number): string => {
+  //key is 1000*sides+count
+  const regularPolyhedraNames = new Map<number, string>([
+    [3003, "Tetrahedron"],
+    [3004, "Octahedron"],
+    [3005, "Icosahedron"],
+    [4003, "Cube"],
+    [5003, "Dodecahedron"],
+  ]);
+  return (
+    regularPolyhedraNames.get(sides * 1000 + count) || "not a regular polyhedra";
+  );
+};
 
 export const regularTiling = (sides: number, count: number): RegularTiling => {
   let angleSum = interiorAngle(sides) * count;
@@ -38,7 +39,7 @@ export const regularTiling = (sides: number, count: number): RegularTiling => {
   if (angleSum < 360) {
     regularTilingType = "POLYHEDRON";
     //additional checks: not needed for regular case
-    name = regularPolyhedraNames.get(sides * 1000 + count);
+    name = regularPolyhedraName(sides, count);
   } else if (angleSum == 360) {
     //additional checks: not needed for regular case
     regularTilingType = "TESSELLATION";
