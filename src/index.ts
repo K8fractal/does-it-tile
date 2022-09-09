@@ -9,17 +9,19 @@ enum StatusCodes {
 
 const app = express();
 
-app.get("/hello/:name", (req, res) => {
-  res.send("Hello " + req.params.name + ". Nice to meet you!");
-});
-
-app.get("/tile", (req, res) => {
+app.get("/", (req, res) => {
   res.send(
-    "To get information about a tiling, give a description of regular polygons around a vertext. Try /tile/3.6"
+    "Welcome to Does It Tile?! To get information about a tiling, give a description of regular polygons around a vertext. Try /tile/3.6"
   );
 });
 
-app.get("/tile/:sides.:count", (req, res) => {
+/*app.get("/tile", (req, res) => {
+  res.send(
+    "To get information about a tiling, give a description of regular polygons around a vertext. Try /tile/3.6"
+  );
+});*/
+
+app.get("/:sides.:count", (req, res) => {
   const sides = Number(req.params.sides);
   const count = Number(req.params.count);
   if (isNaN(sides) || isNaN(count)) {
