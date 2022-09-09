@@ -27,7 +27,7 @@ const regularPolyhedraName = (sides: number, count: number): string => {
     [5003, "Dodecahedron"],
   ]);
   return (
-    regularPolyhedraNames.get(sides * 1000 + count) || "not a regular polyhedra";
+    regularPolyhedraNames.get(sides * 1000 + count) || "not a regular polyhedra"
   );
 };
 
