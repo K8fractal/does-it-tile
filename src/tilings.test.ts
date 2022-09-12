@@ -34,14 +34,20 @@ describe("testing polygonName", () => {
 describe("testing regularTiling", () => {
   test("tesselations", () => {
     expect(regularTiling(3, 6).polygon).toBe("triangle");
-    expect(regularTiling(3, 6).curvatureType).toBe("TESSELLATION");
-    expect(regularTiling(4, 4).curvatureType).toBe("TESSELLATION");
-    expect(regularTiling(6, 3).curvatureType).toBe("TESSELLATION");
+    expect(regularTiling(3, 6).curvatureType).toBe("FLAT TESSELLATION");
+    expect(regularTiling(4, 4).curvatureType).toBe("FLAT TESSELLATION");
+    expect(regularTiling(6, 3).curvatureType).toBe("FLAT TESSELLATION");
     expect(regularTiling(3, 6).name).toBe(undefined);
   });
   test("polyhedra", () => {
     expect(regularTiling(3, 4).curvatureType).toBe("POLYHEDRON");
     expect(regularTiling(4, 3).name).toBe("Cube");
     expect(regularTiling(3, 3).name).toBe("Tetrahedron");
+  });
+
+  test("hyperbolic", () => {
+    expect(regularTiling(5, 4).curvatureType).toBe("HYPERBOLIC");
+    expect(regularTiling(10, 3).curvatureType).toBe("HYPERBOLIC");
+    expect(regularTiling(3, 8).name).toBe(undefined);
   });
 });

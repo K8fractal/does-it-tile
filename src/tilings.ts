@@ -1,5 +1,5 @@
 export type tilingType =
-  | "TESSELLATION"
+  | "FLAT TESSELLATION"
   | "POLYHEDRON"
   | "HYPERBOLIC"
   | "BRANCHING";
@@ -42,7 +42,7 @@ export const regularTiling = (sides: number, count: number): RegularTiling => {
     name = regularPolyhedraName(sides, count);
   } else if (angleSum == 360) {
     //additional checks: not needed for regular case
-    regularTilingType = "TESSELLATION";
+    regularTilingType = "FLAT TESSELLATION";
   } else {
     //angleSum > 360
     regularTilingType = "HYPERBOLIC";

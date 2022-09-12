@@ -11,15 +11,9 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send(
-    "Welcome to Does It Tile?! To get information about a tiling, give a description of regular polygons around a vertext. Try /tile/3.6"
+    "Welcome to Does It Tile?! To get information about a tiling, give a description of regular polygons around a vertext. Try /3.6"
   );
 });
-
-/*app.get("/tile", (req, res) => {
-  res.send(
-    "To get information about a tiling, give a description of regular polygons around a vertext. Try /tile/3.6"
-  );
-});*/
 
 app.get("/:sides.:count", (req, res) => {
   const sides = Number(req.params.sides);
