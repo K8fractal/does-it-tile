@@ -11,7 +11,9 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send(
-    "Welcome to Does It Tile?! To get information about a tiling, give a description of regular polygons around a vertext. Try /3.6"
+    "<h1>Welcome to <em>Does It Tile?!</em></h1>" +
+      "<p> To get information about a tiling, give a description of regular polygons around a vertext. Try /3.6</p>" +
+      "<p><a href='https://github.com/K8fractal/does-it-tile'>Source code</a></p>"
   );
 });
 
